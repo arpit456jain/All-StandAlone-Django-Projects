@@ -1,0 +1,1 @@
+# All-StandAlone-Django-Projects
