@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block body %}
+{% for message in messages %}
+
+<div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+  <strong>{{ message.tags }}</strong> {{message}}
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+{% endfor %}
+<div class="container">
+   <h1 class="text-center">Register here</h1>
+  <form method="post" action="/registration/">
+  {% csrf_token %}
+  <div class="form-group">
+    <label for="fname">First Name</label>
+    <input type="text" class="form-control" id="fname" name="fname" aria-describedby="emailHelp" required>
+  </div>
+  <div class="form-group">
+    <label for="sname">Second Name</label>
+    <input type="text" class="form-control" id="sname" name="sname" aria-describedby="emailHelp" required>
+  </div>
+  <div class="form-group">
+    <label for="uname">User Name</label>
+    <input type="text" class="form-control" id="uname" name="uname" aria-describedby="emailHelp" required>
+  </div>
+  <div class="form-group">
+    <label for="email">Email address</label>
+    <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" required>
+  </div>
+  <div class="form-group">
+    <label for="password">Password</label>
+    <input type="password" class="form-control" id="password" name="password" required>
+  </div>
+  <div class="form-group">
+    <label for="cpassword">Confirm Password</label>
+    <input type="password" class="form-control" id="cpassword" name="cpassword" required>
+  </div>
+  <div class="form-group form-check">
+    <input type="checkbox" class="form-check-input" id="exampleCheck1" required>
+    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+  </div>
+{% endblock body %}
