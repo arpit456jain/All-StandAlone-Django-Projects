@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %} about
+{% endblock title %}
+{% block tastactive %}active
+      {% endblock tastactive %}
+{% block body %}
+
+<div class="container my-5">
+    <h2 class="text-center my-2">Search Results - AllTasks </h2>
+    <table class="table" id="myTable">
+  <thead>
+    <tr>
+      <th scope="col">+</th>
+      <th scope="col">TAST TITLE</th>
+      <th scope="col">TASK DESC</th>
+      {% comment %} <th scope="col">Handle</th> {% endcomment %}
+    </tr>
+  </thead>
+  <tbody>
+  {% for task in alltasks %}
+    <tr>
+      <th scope="row">{{forloop.counter}}</th>
+      {% comment %} <th scope="row">{{task.id}}</th> {% endcomment %}
+      <td>{{task.taskTitle}}</td>
+      <td colspan=2>{{task.TaskDesc}}</td>
+      
+    </tr>
+    
+    {% endfor %}
+  </tbody>
+</table>
+</div>
+<br>
+<br>
+{% endblock body %}

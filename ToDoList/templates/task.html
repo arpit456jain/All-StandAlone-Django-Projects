@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+{% block title %} about
+{% endblock title %}
+{% block tastactive %}active
+      {% endblock tastactive %}
+{% block body %}
+
+
+<!-- Modal -->
+<div class="modal fade" id="addmoretask" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+         <form action="/" method="post">
+    {% csrf_token %}
+  <div class="form-group">
+    <label for="exampleFormControlInput1">Title of Task</label>
+    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="title" name="tastTitle" required>
+  </div>
+  
+ 
+  <div class="form-group">
+    <label for="exampleFormControlTextarea1">Task Description</label>
+    <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" name="taskDesc" required></textarea>
+  </div>
+  <button type="submit" class="btn btn-primary">Add Task</button>
+</form>
+      </div>
+      
+    </div>
+  </div>
+</div>
+<div class="container my-5">
+    <h2 class="text-center my-2">To Do List - AllTasks </h2>
+    <table class="table" id="myTable">
+  <thead>
+    <tr>
+      <th scope="col">+</th>
+      <th scope="col" style="width: 10vw;">TAST TITLE</th>
+      <th scope="col">TASK DESC</th>
+      <th scope="col">Handle</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for task in alltasks %}
+    <tr>
+      <th scope="row">{{forloop.counter}}</th>
+      <td>{{task.taskTitle}}</td>
+      <td >{{task.TaskDesc}}</td>
+      <th scope="row"><a href="/deleteitem/{{task.id}}" class="btn btn-primary">Delete</a></th>
+      
+    </tr>
+    
+    {% endfor %}
+  </tbody>
+</table>
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addmoretask">
+  Add More Tasks
+</button>
+</div>
+<br>
+<br>
+{% endblock body %}
